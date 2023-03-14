@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.Spannable;
 import android.text.SpannableString;
+import android.text.Spanned;
 import android.text.style.ForegroundColorSpan;
 import android.util.Log;
 import android.widget.ImageView;
@@ -39,7 +40,7 @@ public class MovieActivity extends AppCompatActivity {
 
         linkViews();
         getIdIntent();
-        requestQueue = Volley.newRequestQueue(this);
+       requestQueue = Volley.newRequestQueue(this);
 
         getMovieData();
     }
@@ -127,7 +128,7 @@ public class MovieActivity extends AppCompatActivity {
                 error.printStackTrace();
             }
         });
-        requestQueue.add(request);
+       requestQueue.add(request);
     }
 
     private void setText(TextView view, String title, String body){

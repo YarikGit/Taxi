@@ -2,6 +2,7 @@ package com.example.movie.data;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,6 +34,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
         TextView titleTextView;
         TextView yearTextView;
         String currentDataUrl;
+        int stepAnim = 0;
 
         public MovieViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -46,10 +48,36 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
 
         @Override
         public void onClick(View v) {
-            Intent intent = new Intent(context, MovieActivity.class);
-            intent.putExtra("dataUrl", currentDataUrl);
-            context.startActivity(intent);
+            startAnimate(itemView);
         }
+
+        private void startAnimate(View view){
+            Handler handler = new Handler();
+
+            Runnable runnable = new Runnable() {
+                @Override
+                public void run() {
+
+                    if(stepAnim == 0) {
+                        view.animate().scaleX(0.95f).scaleY(0.95f).setDuration(100);
+
+                    }
+                    if(stepAnim == 1) {
+                        view.animate().scaleX(1).scaleY(1).setDuration(50);
+                        stepAnim = 0;
+                        Intent intent = new Intent(context, MovieActivity.class);
+                        intent.putExtra("dataUrl", currentDataUrl);
+                        context.startActivity(intent);
+                        return;
+                    }
+
+                    stepAnim ++;
+                    handler.postDelayed(this,150);
+                }
+            };
+            handler.post(runnable);
+        }
+
     }
 
     @NonNull
@@ -68,7 +96,6 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
         String title = currentMovie.getTitle();
         String year = currentMovie.getYear();
         String poster = currentMovie.getPosterUrl();
-        String dataUrl = currentMovie.getDataUrl();
 
         holder.currentDataUrl = currentMovie.getDataUrl();
         holder.titleTextView.setText(title);

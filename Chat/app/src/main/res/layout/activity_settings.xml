@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SettingsActivity">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        app:cardElevation="10dp"
+        app:cardCornerRadius="20dp">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_gravity="center"
+                android:layout_margin="24dp"
+                android:elevation="10dp"
+                app:cardCornerRadius="80dp">
+
+                <ImageView
+                    android:id="@+id/settingsAvatar"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    android:src="@color/purple_500" />
+
+            </androidx.cardview.widget.CardView>
+
+            <EditText
+                android:id="@+id/settingsNameEditText"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="22dp"
+                android:maxLength="20"
+                android:maxLines="1"
+                android:text="Name"
+                android:textAlignment="center"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/settingsPhoneEditText"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="22dp"
+                android:inputType="phone"
+                android:text="+380 ___ ___ ___"
+                android:textAlignment="center"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/settingsEmailTextView"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="22dp"
+                android:text="Email"
+                android:textAlignment="center"
+                android:textSize="18sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageButton
+                    android:id="@+id/settingsSignOut"
+                    android:layout_width="100dp"
+                    android:layout_weight="1"
+                    android:layout_height="40dp"
+                    android:layout_margin="24dp"
+                    android:rotation="180"
+                    android:src="@drawable/baseline_exit_to_app_24" />
+
+                <ImageButton
+                    android:id="@+id/settingsSaveImageButton"
+                    android:layout_width="100dp"
+                    android:layout_weight="1"
+                    android:layout_height="40dp"
+                    android:layout_margin="24dp"
+                    android:src="@drawable/baseline_save_24" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</RelativeLayout>
